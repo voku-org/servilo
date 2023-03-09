@@ -1,4 +1,5 @@
 import { Column, Entity, ObjectID, ObjectIdColumn, PrimaryColumn } from "typeorm";
+import * as bcrypt from "bcrypt";
 
 @Entity()
 export class User {
@@ -44,5 +45,33 @@ export class User {
     @Column()
     gender: string;
 
+    @Column()
+    nationality: string;
+
+    @Column()
+    residence: string;
+
+    @Column({ type: "date", nullable: false})
+    birthday: string;
+
+    @Column()
+    age: number;
+
+    @Column({ type: "date", nullable: false})
+    registration_date: string;
+
+    @Column({type: "date", nullable: false})
+    last_connection: string;
+
+    @Column({type: "json"})
+    contact: JSON;
+
+    @Column()
+    status: string;
+
+    async validatePassword(password: string): Promise<boolean>{
+        const hash = await bcrypt.hash(password, this.salt);
+        return hash === this.password;
+    }
 
 }
