@@ -48,9 +48,9 @@ export class UserService {
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     let toUpdate: any = updateUserDto;
-    for(let key of toUpdate)
+    for(let key of Object.keys(toUpdate))
     {
-      if(toUpdate[key] === undefined)
+      if(toUpdate[key] === undefined || toUpdate[key] === "")
       {
         delete toUpdate[key];
       }
