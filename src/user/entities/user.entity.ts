@@ -1,5 +1,6 @@
 import { Column, Entity, ObjectID, ObjectIdColumn, PrimaryColumn } from "typeorm";
 import * as bcrypt from "bcrypt";
+import { NumericType } from "mongodb";
 
 @Entity()
 export class User {
@@ -57,11 +58,11 @@ export class User {
     @Column()
     age: number;
 
-    @Column({ type: "date", nullable: false})
-    registration_date: string;
+    @Column({ type: "timestamp", nullable: false})
+    registration_date: number;
 
-    @Column({type: "date", nullable: false})
-    last_connection: string;
+    @Column({type: "timestamp", nullable: false})
+    last_connection: number;
 
     @Column({type: "json"})
     contact: JSON;
@@ -71,6 +72,7 @@ export class User {
 
     async validatePassword(password: string): Promise<boolean>{
         const hash = await bcrypt.hash(password, this.salt);
+        console.log(hash === this.password)
         return hash === this.password;
     }
 

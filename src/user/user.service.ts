@@ -50,7 +50,7 @@ export class UserService {
     let toUpdate: any = updateUserDto;
     for(let key of Object.keys(toUpdate))
     {
-      if(toUpdate[key] === undefined || toUpdate[key] === "")
+      if(toUpdate[key] === undefined || toUpdate[key] === "" || key === 'id' || key === 'last_connection' || key === 'registration_date')
       {
         delete toUpdate[key];
       }

@@ -10,8 +10,8 @@ export declare class CreateUserDto {
     esperanto_level: string;
     birthday: string;
     age: number;
-    registration_date: string;
-    last_connection: string;
+    registration_date: number;
+    last_connection: number;
     profile_picture: string | undefined;
     biography: string | undefined;
     interests: string | undefined;

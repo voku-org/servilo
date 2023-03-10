@@ -59,11 +59,11 @@ __decorate([
 ], CreateUserDto.prototype, "age", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], CreateUserDto.prototype, "registration_date", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], CreateUserDto.prototype, "last_connection", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),

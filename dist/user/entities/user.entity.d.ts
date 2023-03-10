@@ -18,8 +18,8 @@ export declare class User {
     residence: string;
     birthday: string;
     age: number;
-    registration_date: string;
-    last_connection: string;
+    registration_date: number;
+    last_connection: number;
     contact: JSON;
     status: string;
     validatePassword(password: string): Promise<boolean>;

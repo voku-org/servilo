@@ -22,11 +22,13 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
     }
     async validate(userData) {
-        return await this.userService.findByEmail(userData.email);
+        const findedUser = await this.userService.findByEmail(userData.username);
+        return findedUser;
     }
     async login(user) {
-        return await this.validate(user).then((userData) => {
-            if (!(userData && userData.validatePassword(user.password))) {
+        return await this.validate(user).then(async (userData) => {
+            const valid = await userData.validatePassword(user.password);
+            if (!valid) {
                 return { status: 404 };
             }
             let payload = { id: userData.id, names: userData.names };

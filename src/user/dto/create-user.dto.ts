@@ -36,10 +36,10 @@ export class CreateUserDto {
     age: number;
 
     @ApiProperty()
-    registration_date: string;
+    registration_date: number;
 
     @ApiProperty()
-    last_connection: string;
+    last_connection: number;
 
     @ApiProperty()
     profile_picture: string | undefined;

@@ -15,6 +15,7 @@ const bcrypt = require("bcrypt");
 let User = class User {
     async validatePassword(password) {
         const hash = await bcrypt.hash(password, this.salt);
+        console.log(hash === this.password);
         return hash === this.password;
     }
 };
@@ -91,12 +92,12 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "age", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "date", nullable: false }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: "timestamp", nullable: false }),
+    __metadata("design:type", Number)
 ], User.prototype, "registration_date", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "date", nullable: false }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: "timestamp", nullable: false }),
+    __metadata("design:type", Number)
 ], User.prototype, "last_connection", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "json" }),

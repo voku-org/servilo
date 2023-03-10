@@ -12,13 +12,13 @@ const user_service_1 = require("../user/user.service");
 const jwt_1 = require("@nestjs/jwt");
 const passport_1 = require("@nestjs/passport");
 const jwt_config_1 = require("../config/jwt.config");
-const user_module_1 = require("../user/user.module");
 const auth_service_1 = require("./auth.service");
 const local_strategy_1 = require("./local.strategy");
 const jwt_strategy_1 = require("./jwt.strategy");
 const typeorm_1 = require("@nestjs/typeorm");
 const auth_controller_1 = require("./auth.controller");
 const user_entity_1 = require("../user/entities/user.entity");
+const user_module_1 = require("../user/user.module");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -26,7 +26,7 @@ AuthModule = __decorate([
         imports: [
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.User]),
             user_module_1.UserModule,
-            passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
+            passport_1.PassportModule,
             jwt_1.JwtModule.registerAsync(jwt_config_1.jwtConfig)
         ],
         controllers: [auth_controller_1.AuthController],

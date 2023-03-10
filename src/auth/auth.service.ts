@@ -14,12 +14,14 @@ export class AuthService {
   ) { }
 
     public async validate(userData: LoginUserDto): Promise<User> {
-        return await this.userService.findByEmail(userData.email);
+        const findedUser = await this.userService.findByEmail(userData.username);
+        return findedUser;
     }
 
     public async login(user: LoginUserDto): Promise< any | { status: number }>{
-        return await this.validate(user).then((userData)=>{
-          if(!(userData && userData.validatePassword(user.password))){
+        return await this.validate(user).then(async (userData)=>{
+          const valid = await userData.validatePassword(user.password);
+          if(!valid){
             return { status: 404 };
           }
           let payload = { id: userData.id, names: userData.names };
@@ -31,7 +33,6 @@ export class AuthService {
              user_id: payload,
              status: 200
           };
-
         });
     }
 
