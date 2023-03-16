@@ -5,12 +5,13 @@ const passport_1 = require("@nestjs/passport");
 const passport_jwt_1 = require("passport-jwt");
 const app_config_1 = require("../config/app.config");
 class JwtStrategy extends (0, passport_1.PassportStrategy)(passport_jwt_1.Strategy) {
-    constructor() {
+    constructor(configService) {
         super({
             jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
             ignoreExpiration: false,
             secretOrKey: (0, app_config_1.default)().appSecret
         });
+        this.configService = configService;
     }
     async validate(payload) {
         return {

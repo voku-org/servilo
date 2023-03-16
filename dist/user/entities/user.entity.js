@@ -15,7 +15,6 @@ const bcrypt = require("bcrypt");
 let User = class User {
     async validatePassword(password) {
         const hash = await bcrypt.hash(password, this.salt);
-        console.log(hash === this.password);
         return hash === this.password;
     }
 };
