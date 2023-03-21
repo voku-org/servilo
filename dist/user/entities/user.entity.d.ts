@@ -2,6 +2,7 @@ import { ObjectID } from "typeorm";
 export declare class User {
     _id: ObjectID;
     id: string;
+    username: string;
     email: string;
     password: string;
     salt: string;

@@ -25,20 +25,34 @@ let AuthService = class AuthService {
         const findedUser = await this.userService.findByEmail(userData.username);
         return findedUser;
     }
+    async verify(decodedUser) {
+        const found = await this.userService.findOne(decodedUser.id);
+        if (!found) {
+            throw new common_1.UnauthorizedException();
+        }
+        return {
+            id: found.id,
+            names: found.names,
+            email: found.email,
+            username: found.username
+        };
+    }
     async login(user) {
         return await this.validate(user).then(async (userData) => {
             const valid = await userData.validatePassword(user.password);
             if (!valid) {
                 return { status: 404 };
             }
-            let payload = { id: userData.id, names: userData.names };
-            const accessToken = this.jwtService.sign(payload);
-            return {
-                expires_in: '1 day',
-                access_token: accessToken,
-                user_id: payload,
-                status: 200
+            let payload = {
+                id: userData.id,
+                names: userData.names,
+                email: userData.email,
+                username: userData.username,
+                profile_picture: userData.profile_picture,
+                gender: userData.gender
             };
+            const accessToken = this.jwtService.sign(payload);
+            return Object.assign(Object.assign({ expires_in: '1 day', access_token: accessToken }, payload), { status: 200 });
         });
     }
     async register(user) {

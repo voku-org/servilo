@@ -1,6 +1,5 @@
 import { Column, Entity, ObjectID, ObjectIdColumn, PrimaryColumn } from "typeorm";
 import * as bcrypt from "bcrypt";
-import { NumericType } from "mongodb";
 
 @Entity()
 export class User {
@@ -9,6 +8,9 @@ export class User {
 
     @PrimaryColumn({unique: true, nullable: false})
     id: string;
+
+    @Column({unique: true, nullable: false})
+    username: string;
 
     @Column({unique: true, nullable: false})
     email: string;

@@ -17,6 +17,10 @@ class JwtStrategy extends (0, passport_1.PassportStrategy)(passport_jwt_1.Strate
         return {
             id: payload.id,
             names: payload.names,
+            email: payload.email,
+            username: payload.username,
+            gender: payload.gender,
+            profile_picture: payload.profile_picture
         };
     }
 }

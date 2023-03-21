@@ -1,10 +1,12 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Req, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import { LoginUserDto } from 'src/user/dto/login-user.dto';
-import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './local-auth.guard';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth()
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -18,5 +20,11 @@ export class AuthController {
   @Post('signup')
   async signup(@Body() user: CreateUserDto): Promise<any> {
     return this.authService.register(user);
+  }
+  
+  @UseGuards(JwtAuthGuard)
+  @Get('verify')
+  async verifyToken(@Req() req: any): Promise<any> {
+    return this.authService.verify(req.user);
   }  
 }
