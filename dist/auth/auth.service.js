@@ -34,7 +34,9 @@ let AuthService = class AuthService {
             id: found.id,
             names: found.names,
             email: found.email,
-            username: found.username
+            username: found.username,
+            profile_picture: found.profile_picture,
+            gender: found.gender
         };
     }
     async login(user) {

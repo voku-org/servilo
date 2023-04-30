@@ -14,14 +14,24 @@ const user_module_1 = require("./user/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const config_1 = require("@nestjs/config");
 const app_config_1 = require("./config/app.config");
+const serve_static_1 = require("@nestjs/serve-static");
+const app_controller_1 = require("./app.controller");
+const app_service_1 = require("./app.service");
+const path_1 = require("path");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [user_module_1.UserModule,
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: (0, path_1.join)(__dirname, '..', 'public'),
+                exclude: ['/api/(.*)'],
+            }),
             config_1.ConfigModule.forRoot({ isGlobal: true, envFilePath: `${process.env.NODE_ENV}.env`, load: [app_config_1.default] }),
             dist_1.TypeOrmModule.forRootAsync(typeorm_config_1.typeOrmConfig),
             auth_module_1.AuthModule],
+        controllers: [app_controller_1.AppController],
+        providers: [app_service_1.AppService]
     })
 ], AppModule);
 exports.AppModule = AppModule;
