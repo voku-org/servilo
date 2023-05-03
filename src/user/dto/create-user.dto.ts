@@ -48,11 +48,20 @@ export class CreateUserDto {
     biography: string | undefined;
 
     @ApiProperty()
-    interests: string | undefined;
+    residence: string | undefined;
+
+    @ApiProperty()
+    interests: string[] | undefined;
 
     @ApiProperty()
     native_language: string | undefined;
 
     @ApiProperty()
     spoken_languages: string[] | undefined;
+
+    @ApiProperty()
+    contact: JSON | undefined;
+
+    @ApiProperty()
+    status: string | undefined;
 }

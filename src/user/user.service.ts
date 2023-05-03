@@ -46,6 +46,10 @@ export class UserService {
     return await this.userRepo.findOne({where: {id: id}});
   }
 
+  async findOneByUserName(username: string) {
+    return await this.userRepo.findOne({where: {username: username}});
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto) {
     let toUpdate: any = updateUserDto;
     for(let key of Object.keys(toUpdate))

@@ -25,8 +25,8 @@ let UserController = class UserController {
     findAll() {
         return this.userService.findAll();
     }
-    findOne(id) {
-        return this.userService.findOne(id);
+    findOneByUserName(username) {
+        return this.userService.findOneByUserName(username);
     }
     update(id, updateUserDto) {
         return this.userService.update(id, updateUserDto);
@@ -42,12 +42,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(':username'),
+    __param(0, (0, common_1.Param)('username')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], UserController.prototype, "findOne", null);
+], UserController.prototype, "findOneByUserName", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Patch)(':id'),

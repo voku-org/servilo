@@ -10,7 +10,7 @@ export declare class User {
     names: string;
     last_name: string;
     biography: string;
-    interests: string;
+    interests: string[];
     native_language: string;
     spoken_languages: string[];
     esperanto_level: string;

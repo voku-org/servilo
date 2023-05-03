@@ -14,7 +14,10 @@ export declare class CreateUserDto {
     last_connection: number;
     profile_picture: string | undefined;
     biography: string | undefined;
-    interests: string | undefined;
+    residence: string | undefined;
+    interests: string[] | undefined;
     native_language: string | undefined;
     spoken_languages: string[] | undefined;
+    contact: JSON | undefined;
+    status: string | undefined;
 }

@@ -34,7 +34,7 @@ export class User {
     biography: string;
 
     @Column()
-    interests: string;
+    interests: string[];
 
     @Column({nullable: false})
     native_language: string;

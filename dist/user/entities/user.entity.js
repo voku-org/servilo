@@ -60,7 +60,7 @@ __decorate([
 ], User.prototype, "biography", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Array)
 ], User.prototype, "interests", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: false }),
