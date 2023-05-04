@@ -32,7 +32,7 @@ let AuthService = class AuthService {
         }
         return {
             id: found.id,
-            names: found.names,
+            names: found.names + " " + found.last_name,
             email: found.email,
             username: found.username,
             profile_picture: found.profile_picture,
