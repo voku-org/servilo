@@ -15,10 +15,10 @@ export class CreateUserDto {
     salt: string;
 
     @ApiProperty()
-    names: string;
+    name: string;
 
     @ApiProperty()
-    last_names: string;
+    lastname: string;
 
     @ApiProperty()
     gender: string;

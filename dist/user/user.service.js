@@ -31,10 +31,12 @@ let UserService = class UserService {
         user.salt = await bcrypt.genSalt();
         user.password = await bcrypt.hash(createUserDto.password, user.salt);
         user.age = this.utilService.calculateAge(createUserDto.birthday);
+        user.names = createUserDto.name;
+        user.last_name = createUserDto.lastname;
         await this.userRepo.save(user);
         return {
             email: user.email,
-            names: user.names,
+            names: user.names + " " + user.last_name,
         };
     }
     async findByEmail(email) {

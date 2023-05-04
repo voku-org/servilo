@@ -3,8 +3,8 @@ export declare class CreateUserDto {
     email: string;
     password: string;
     salt: string;
-    names: string;
-    last_names: string;
+    name: string;
+    lastname: string;
     gender: string;
     nationality: string;
     esperanto_level: string;
