@@ -42,10 +42,9 @@ export class AuthService {
           }
           let payload = { 
             id: userData.id, 
-            names: userData.names, 
+            names: userData.names + " " + userData.last_name, 
             email: userData.email, 
             username: userData.username,
-            profile_picture: userData.profile_picture,
             gender: userData.gender 
           };
 
@@ -55,6 +54,7 @@ export class AuthService {
              expires_in: '1 day',
              access_token: accessToken,
              ...payload,
+             profile_picture: userData.profile_picture,
              status: 200
           };
         });

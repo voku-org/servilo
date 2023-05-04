@@ -10,7 +10,6 @@ export declare class JwtStrategy extends JwtStrategy_base {
         email: any;
         username: any;
         gender: any;
-        profile_picture: any;
     }>;
 }
 export {};

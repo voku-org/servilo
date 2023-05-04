@@ -47,14 +47,13 @@ let AuthService = class AuthService {
             }
             let payload = {
                 id: userData.id,
-                names: userData.names,
+                names: userData.names + " " + userData.last_name,
                 email: userData.email,
                 username: userData.username,
-                profile_picture: userData.profile_picture,
                 gender: userData.gender
             };
             const accessToken = this.jwtService.sign(payload);
-            return Object.assign(Object.assign({ expires_in: '1 day', access_token: accessToken }, payload), { status: 200 });
+            return Object.assign(Object.assign({ expires_in: '1 day', access_token: accessToken }, payload), { profile_picture: userData.profile_picture, status: 200 });
         });
     }
     async register(user) {
